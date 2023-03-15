@@ -22,10 +22,10 @@ func main() {
 		return
 	}
 
-	redirectParams := []string{"redirect", "redirectUrl"}
+	redirectParams := []string{"redirectUrl"}
 
 	// Create a redirect URL with the target host and path
-	redirectURL := "example.com"
+	redirectURL := "https://example.com"
 
 	// Create a query string with a redirect URL parameter
 	for _, redirectParam := range redirectParams {
@@ -55,9 +55,7 @@ func main() {
 				return
 			}
 
-			if location.Host == redirectURL {
-				fmt.Println(location.Host)
-				fmt.Println(redirectURL)
+			if location.String() == redirectURL {
 				fmt.Println("Vulnerable to open redirect!")
 				break
 			}
